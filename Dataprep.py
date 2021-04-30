@@ -9,6 +9,7 @@ import openpyxl
 
 #1.0 Data preparation
 # remember you have to define how the excel should be set up. See word
+#if 1.5 option 2 is selected, which is likely a second excel needs ot be set up, where the data is to be written in. or a second sheet should be added to the original file.
 # one open question is how the axis are defined, depending maybe also if I use cartopy or something els
 #1.1 remember import the stuff above so the programm is able to read the excel files easier. so 0.0
 #currently I have prepared a excel file which this program will access
