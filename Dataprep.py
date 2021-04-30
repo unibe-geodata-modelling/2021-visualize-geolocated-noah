@@ -15,14 +15,27 @@ import openpyxl
 #1.2 read the excel file.
 df = pd.read_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling\Final Project\Excel Files\Test Excel Dataset.xlsx", sheet_name='Sheet1', engine= 'openpyxl')
 
-#1.3 Search Median income, divide by 100 then multiply by 80, to get 80% value. Then Dividd that value by 100 and multiply by 30.
+#1.3 Search Median income, divide by 100 then multiply by 80, to get 80% value. Then Dividd that value by 100 and multiply by 30.(or multiply by.24)
 #this value is the maximum rent cost a property cna have to be noas.
 
-df.drop()
+df["rentmax"]= df['Median Income (Monthly)'] *0.24 #calculates the maximum rent for the median mean and adds it as a new column caller rentmanx to the df
+
+
+
 
 #1.4 compare values generated at 1.3 with the colum with rent prices, and delete rows where rent exceeds the values of 1.3
+dfnew= df[df['Rent Price (Monthly)']<=df["rentmax"]] #this part created new dataframe (dfnew) which as a condition only includes rows where rent montly is smaller or equalt to rentmax.
 
 #1.5 return, save newly created excel file.
+
+#option 1
+dfnew.to_excel("dfnew.xlsx")# saves it but only in the reopsitory location, ideally I would like to specify where to save it$
+#optionally precreate a ecel file an write to sheet
+
+#option 2 this variant you need to make an excel in advance and give path and sheet name. Thne the data will be written to the sheet of the preixisting excel file
+dfnew.to_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling\Final Project\Excel Files\Cowabunga.xlsx", sheet_name="Bananogram")
+
+
 
 
 #2.0map creation, probably with cartopy, if not maybe with contextily of geopandas
