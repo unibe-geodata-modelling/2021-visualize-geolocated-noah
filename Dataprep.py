@@ -57,3 +57,5 @@ dfnew = pd.read_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling
 dfnew.crs
 #Then reprojet to web map projectiosn (still not sure what my original data points xy need to be.)
 dfnew_wm = dfnew.to_crs("EPSG:4326")
+
+
