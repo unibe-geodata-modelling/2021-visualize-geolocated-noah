@@ -52,10 +52,12 @@ import contextily as ctx
 #2.2 First need to import the excel output of step 1.If step one was just performed then this file will still be in memory
 #2.2 If not the code below can be read. this is both if step 1 was done before this session, or if the file needent be prepared and could be used directly.pathway needs to be given.
 dfnew = pd.read_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling\Final Project\Excel Files\Cowabunga.xlsx", sheet_name="Bananogram", engine= 'openpyxl')
-#2.3 Now with data loaded,covnert data to web map projections?
-#first check projection
+#2.3 Now with data loaded (which has to have its geolocation given in EPSG: 4326 i.e WGS84 )
+#first check projection(didnt work as no crs)
 dfnew.crs
-#Then reprojet to web map projectiosn (still not sure what my original data points xy need to be.)
+#If data not in the right projection, can reprojet to web map projectiosn
 dfnew_wm = dfnew.to_crs("EPSG:4326")
+
+#2.4 somehow find out how to tell python my used proejction systme EPSG: 4326 and where it can find the coordinate data form the excel data
 
 
