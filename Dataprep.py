@@ -43,6 +43,7 @@ dfnew.to_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling\Final 
 #2.1 import things, that might need, here in addition to step 0.0.
 #2.1 I have decided to first try with contextily as the normal background map seemed better for my aplicatin than with cartopy
 #2.1 therefore these imports are taken from excercies introduction as I will do something similar
+import pip
 import fiona
 import pyproj
 import rtree
@@ -52,6 +53,14 @@ import contextily as ctx
 #2.2 First need to import the excel output of step 1.If step one was just performed then this file will still be in memory
 #2.2 If not the code below can be read. this is both if step 1 was done before this session, or if the file needent be prepared and could be used directly.pathway needs to be given.
 dfnew = pd.read_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling\Final Project\Excel Files\Cowabunga.xlsx", sheet_name="Bananogram", engine= 'openpyxl')
+#2.3 current dataframe has no geometry, so need to convert it so it can have a crs.
+gdf = geopandas.GeoDataFrame(dfnew, geometry=geopandas.points_from_xy(dfnew.Longitude,dfnew.Latitude))
+
+#after conversion can specify the crs. Some variant of this
+nodesgdf= nodesgdf.set_crs(2056,allow_override=True)
+
+
+#this is currently old hat blow. Reviw once the tranfpration has been achieved
 #2.3 Now with data loaded (which has to have its geolocation given in EPSG: 4326 i.e WGS84 )
 #first check projection(didnt work as no crs)
 dfnew.crs
