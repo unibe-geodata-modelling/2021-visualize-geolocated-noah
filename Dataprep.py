@@ -15,6 +15,7 @@ import openpyxl
 #currently I have prepared a excel file which this program will access
 #1.2 read the excel file.
 df = pd.read_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling\Final Project\Excel Files\Test Excel Dataset.xlsx", sheet_name='Sheet1', engine= 'openpyxl')
+df = pd.read_excel("C:\FinnFeldmann\Excel Files\Test Excel Dataset.xlsx", sheet_name='Sheet1', engine= 'openpyxl')
 
 #1.3 Search Median income, divide by 100 then multiply by 80, to get 80% value. Then Dividd that value by 100 and multiply by 30.(or multiply by.24)
 #this value is the maximum rent cost a property cna have to be noas.
