@@ -5,7 +5,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import xlrd
 import openpyxl
-
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import xlrd
+import openpyxl
 
 #1.0 Data preparation
 # remember you have to define how the excel should be set up. See word
@@ -14,7 +18,7 @@ import openpyxl
 #1.1 remember import the stuff above so the programm is able to read the excel files easier. so 0.0
 #currently I have prepared a excel file which this program will access
 #1.2 read the excel file.
-df = pd.read_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling\Final Project\Excel Files\Test Excel Dataset.xlsx", sheet_name='Sheet1', engine= 'openpyxl')
+
 df = pd.read_excel("C:\FinnFeldmann\Excel Files\Test Excel Dataset.xlsx", sheet_name='Sheet1', engine= 'openpyxl')
 
 #1.3 Search Median income, divide by 100 then multiply by 80, to get 80% value. Then Dividd that value by 100 and multiply by 30.(or multiply by.24)
@@ -37,7 +41,7 @@ dfnew.to_excel("dfnew.xlsx")# saves it but only in the reopsitory location, idea
 #option 2 this variant you need to make an excel in advance and give path and sheet name. Thne the data will be written to the sheet of the preixisting excel file
 dfnew.to_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling\Final Project\Excel Files\Cowabunga.xlsx", sheet_name="Bananogram")
 
-
+dfnew.to_excel("C:\FinnFeldmann\Excel Files\Cowabunga.xlsx", sheet_name="Bananogram")
 
 
 #2.0map creation, probably with cartopy, if not maybe with contextily of geopandas
@@ -54,8 +58,12 @@ import contextily as ctx
 #2.2 First need to import the excel output of step 1.If step one was just performed then this file will still be in memory
 #2.2 If not the code below can be read. this is both if step 1 was done before this session, or if the file needent be prepared and could be used directly.pathway needs to be given.
 dfnew = pd.read_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling\Final Project\Excel Files\Cowabunga.xlsx", sheet_name="Bananogram", engine= 'openpyxl')
+dfnew = pd.read_excel("C:\FinnFeldmann\Excel Files\Cowabunga.xlsx", sheet_name="Bananogram", engine= 'openpyxl')
+
 #2.3 current dataframe has no geometry, so need to convert it so it can have a crs.
 gdf = geopandas.GeoDataFrame(dfnew, geometry=geopandas.points_from_xy(dfnew.Longitude,dfnew.Latitude))
+
+gdf = gpd.GeoDataFrame(dfnew, geometry=gpd.points_from_xy(dfnew.Longitude,dfnew.Latitude))
 
 #after conversion can specify the crs. Some variant of this
 nodesgdf= nodesgdf.set_crs(2056,allow_override=True)
