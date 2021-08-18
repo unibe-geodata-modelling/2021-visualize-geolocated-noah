@@ -61,21 +61,30 @@ dfnew = pd.read_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling
 dfnew = pd.read_excel("C:\FinnFeldmann\Excel Files\Cowabunga.xlsx", sheet_name="Bananogram", engine= 'openpyxl')
 
 #2.3 current dataframe has no geometry, so need to convert it so it can have a crs.
-gdf = geopandas.GeoDataFrame(dfnew, geometry=geopandas.points_from_xy(dfnew.Longitude,dfnew.Latitude))
 
 gdf = gpd.GeoDataFrame(dfnew, geometry=gpd.points_from_xy(dfnew.Longitude,dfnew.Latitude))
 
-#after conversion can specify the crs. Some variant of this
-nodesgdf= nodesgdf.set_crs(2056,allow_override=True)
+#after conversion can specify the crs. Some variant of this double check if this is the projection I want
+gdf = gdf.set_crs(2056,allow_override=True)
 
+gdf = gdf.set_crs(4326,allow_override=True)
+# then try plotting with
+gdf.boundary.plot()
 
 #this is currently old hat blow. Reviw once the tranfpration has been achieved
 #2.3 Now with data loaded (which has to have its geolocation given in EPSG: 4326 i.e WGS84 )
 #first check projection(didnt work as no crs)
 dfnew.crs
+
+gdf.crs
 #If data not in the right projection, can reprojet to web map projectiosn
 dfnew_wm = dfnew.to_crs("EPSG:4326")
 
-#2.4 somehow find out how to tell python my used proejction systme EPSG: 4326 and where it can find the coordinate data form the excel data
+#2.4 figure out how to plot. as with 2056 it almost worked, 4326 even less.
+#so this part of the step should plot the points on an automatically generated map
 
 
+
+ax = gdf.boundary.plot(figsize=(20, 20), alpha=1.0, edgecolor='blue')
+ctx.add_basemap(ax, source=ctx.providers.CartoDB.Voyager)
+ax.set_axis_off()
