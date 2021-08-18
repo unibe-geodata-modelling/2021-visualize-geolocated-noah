@@ -68,9 +68,8 @@ gdf = gpd.GeoDataFrame(dfnew, geometry=gpd.points_from_xy(dfnew.Longitude,dfnew.
 gdf = gdf.set_crs(2056,allow_override=True)
 
 gdf = gdf.set_crs(4326,allow_override=True)
-# then try plotting with
-gdf.boundary.plot()
 
+gdf = gdf.set_crs(3857,allow_override=True)
 #this is currently old hat blow. Reviw once the tranfpration has been achieved
 #2.3 Now with data loaded (which has to have its geolocation given in EPSG: 4326 i.e WGS84 )
 #first check projection(didnt work as no crs)
@@ -80,11 +79,17 @@ gdf.crs
 #If data not in the right projection, can reprojet to web map projectiosn
 dfnew_wm = dfnew.to_crs("EPSG:4326")
 
-#2.4 figure out how to plot. as with 2056 it almost worked, 4326 even less.
-#so this part of the step should plot the points on an automatically generated map
+#2.4 plot first. Here the set dataframe is plotted against a blank backgroun
+
+gdf.boundary.plot()
+gdf.plot()
+
+#2.5 now try to add a basemap. This should add a automatically generated map to the backgruond to the plotted points
+ax = gdf.plot()
+ctx.add_basemap(ax)
 
 
+ax = gdf.plot(figsize=(9, 9))
 
-ax = gdf.boundary.plot(figsize=(20, 20), alpha=1.0, edgecolor='blue')
-ctx.add_basemap(ax, source=ctx.providers.CartoDB.Voyager)
-ax.set_axis_off()
+ctx.add_basemap(ax)
+
