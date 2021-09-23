@@ -18,8 +18,9 @@ import openpyxl
 #1.1 remember import the stuff above so the programm is able to read the excel files easier. so 0.0
 #currently I have prepared a excel file which this program will access
 #1.2 read the excel file.
+myworkspace="C:/DATA/develops/2021-visualize-geolocated-noah"
 
-df = pd.read_excel("C:\FinnFeldmann\Excel Files\Test Excel Dataset.xlsx", sheet_name='Sheet1', engine= 'openpyxl')
+df = pd.read_excel(myworkspace+"/dfnew.xlsx", sheet_name='Sheet1', engine= 'openpyxl')
 
 #1.3 Search Median income, divide by 100 then multiply by 80, to get 80% value. Then Dividd that value by 100 and multiply by 30.(or multiply by.24)
 #this value is the maximum rent cost a property cna have to be noas.
@@ -35,7 +36,7 @@ dfnew= df[df['Rent Price (Monthly)']<=df["rentmax"]] #this part created new data
 #1.5 return, save newly created excel file.
 
 #option 1
-dfnew.to_excel("dfnew.xlsx")# saves it but only in the reopsitory location, ideally I would like to specify where to save it$
+dfnew.to_excel(myworkspace+"/dfnew2.xlsx")# saves it but only in the reopsitory location, ideally I would like to specify where to save it$
 #optionally precreate a ecel file an write to sheet
 
 #option 2 this variant you need to make an excel in advance and give path and sheet name. Thne the data will be written to the sheet of the preixisting excel file
@@ -63,21 +64,21 @@ dfnew = pd.read_excel("C:\FinnFeldmann\Excel Files\Cowabunga.xlsx", sheet_name="
 #2.3 current dataframe has no geometry, so need to convert it so it can have a crs.
 
 gdf = gpd.GeoDataFrame(dfnew, geometry=gpd.points_from_xy(dfnew.Longitude,dfnew.Latitude))
+gdf.crs
+
 
 #after conversion can specify the crs. Some variant of this double check if this is the projection I want
-gdf = gdf.set_crs(2056,allow_override=True)
+#gdf = gdf.set_crs(2056,allow_override=True)
 
 gdf = gdf.set_crs(4326,allow_override=True)
 
-gdf = gdf.set_crs(3857,allow_override=True)
+#gdf = gdf.set_crs(3857,allow_override=True)
 #this is currently old hat blow. Reviw once the tranfpration has been achieved
 #2.3 Now with data loaded (which has to have its geolocation given in EPSG: 4326 i.e WGS84 )
 #first check projection(didnt work as no crs)
-dfnew.crs
-
 gdf.crs
 #If data not in the right projection, can reprojet to web map projectiosn
-dfnew_wm = dfnew.to_crs("EPSG:4326")
+#dfnew_wm = dfnew.to_crs("EPSG:4326")
 
 #2.4 plot first. Here the set dataframe is plotted against a blank backgroun
 
@@ -85,11 +86,9 @@ gdf.boundary.plot()
 gdf.plot()
 
 #2.5 now try to add a basemap. This should add a automatically generated map to the backgruond to the plotted points
-ax = gdf.plot()
-ctx.add_basemap(ax)
+ax = gdf.plot(figsize=(9,9))
+ax.set_xlim([gdf.Longitude.min()-0.1,gdf.Longitude.max()+0.1])
+ax.set_ylim([gdf.Latitude.min()-0.1,gdf.Latitude.max()+0.1])
+ctx.add_basemap(ax, crs=gdf.crs, source=ctx.providers.OpenStreetMap.Mapnik)
 
-
-ax = gdf.plot(figsize=(9, 9))
-
-ctx.add_basemap(ax)
 
