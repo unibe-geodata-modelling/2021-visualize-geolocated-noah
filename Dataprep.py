@@ -37,13 +37,15 @@ dfnew= df[df['Rent Price (Monthly)']<=df["rentmax"]] #this part created new data
 #1.5 return, save newly created excel file.
 
 #option 1
-dfnew.to_excel(myworkspace+"/dfnew2.xlsx")# saves it but only in the reopsitory location, ideally I would like to specify where to save it$
+dfnew.to_excel(myworkspace+"\dfnew.xlsx")# saves it but only in the reopsitory location, ideally I would like to specify where to save it$
 #optionally precreate a ecel file an write to sheet
 
 #option 2 this variant you need to make an excel in advance and give path and sheet name. Thne the data will be written to the sheet of the preixisting excel file
-dfnew.to_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling\Final Project\Excel Files\Cowabunga.xlsx", sheet_name="Bananogram")
 
-dfnew.to_excel("C:\FinnFeldmann\Excel Files\Cowabunga.xlsx", sheet_name="Bananogram")
+
+dfnew.to_excel(myworkspace+"\Cowabunga.xlsx", sheet_name="Bananogram")
+
+
 
 
 #2.0map creation, probably with cartopy, if not maybe with contextily of geopandas
@@ -62,6 +64,7 @@ import contextily as ctx
 dfnew = pd.read_excel("D:\School\Master 2 Semester\Geodata Analysis and Modeling\Final Project\Excel Files\Cowabunga.xlsx", sheet_name="Bananogram", engine= 'openpyxl')
 dfnew = pd.read_excel("C:\FinnFeldmann\Excel Files\Cowabunga.xlsx", sheet_name="Bananogram", engine= 'openpyxl')
 
+dfnew = pd.read_excel(myworkspace+"\Cowabunga.xlsx", sheet_name="Bananogram", engine= 'openpyxl')
 #2.3 current dataframe has no geometry, so need to convert it so it can have a crs.
 
 gdf = gpd.GeoDataFrame(dfnew, geometry=gpd.points_from_xy(dfnew.Longitude,dfnew.Latitude))
