@@ -89,11 +89,13 @@ gdf.boundary.plot()
 gdf.plot()
 
 #2.5 now try to add a basemap. This should add a automatically generated map to the backgruond to the plotted points
-ax = gdf.plot(figsize=(9,9))
-ax = gdf.plot(figsize= (gdf.Longitude.min()+0.1,gdf.Longitude.max()+0.1))
+#ax = gdf.plot(figsize=(10,10))
+#ax = gdf.plot(figsize= (gdf.Longitude.max()+0.1,gdf.Latitude.max()+0.1))
+ax = gdf.plot()
+
 
 ax.set_xlim([gdf.Longitude.min()-0.1,gdf.Longitude.max()+0.1])
 ax.set_ylim([gdf.Latitude.min()-0.1,gdf.Latitude.max()+0.1])
 ctx.add_basemap(ax, crs=gdf.crs, source=ctx.providers.OpenStreetMap.Mapnik)
 
-
+ctx.add_basemap
