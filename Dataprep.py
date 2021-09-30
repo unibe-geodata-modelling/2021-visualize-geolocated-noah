@@ -85,7 +85,7 @@ gdf.crs
 
 #2.4 plot first. Here the set dataframe is plotted against a blank backgroun
 
-gdf.boundary.plot()
+#gdf.boundary.plot()
 gdf.plot()
 
 #2.5 now try to add a basemap. This should add a automatically generated map to the backgruond to the plotted points
