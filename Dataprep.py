@@ -101,17 +101,26 @@ ctx.add_basemap(ax, crs=gdf.crs, source=ctx.providers.OpenStreetMap.Mapnik)
 plt.title("NOAH Housing", fontsize=20, color= 'green')
 #plt.annotate("gdf.Rent Price (Monthly)", m(-90,0)), color= 'green'
 
-plt.annotate(pointname, (gdf, gdf.Longitude[2]))
+#plt.annotate(<> pointname, xy= (xloc, yloc))
+for idx, row in gdf():
+    plt.annotate(s=row["Rent Price (Monthly)"], xy=row["geometry"])
+
+
+
+plt.annotate("pointname", (7.245303, 46.94853))
 
 pointname= gdf.Latitude
 print(pointname)
+fig.savefig("test.pdf", dpi=1000)
 
 
 print(gdf.Longitude[0:])
 
 xloc= gdf.Longitude[0:]
 print(xloc)
-yloc=
+
+yloc= gdf.Latitude[0:]
+print(yloc)
 
 #plt.annotate(pointname, (gdf.Latitude[2], gdf.Longitude[2]))
 
