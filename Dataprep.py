@@ -99,35 +99,22 @@ ax.set_ylim([gdf.Latitude.min()-0.1,gdf.Latitude.max()+0.1])
 ctx.add_basemap(ax, crs=gdf.crs, source=ctx.providers.OpenStreetMap.Mapnik)
 
 plt.title("NOAH Housing", fontsize=20, color= 'green')
-#plt.annotate("gdf.Rent Price (Monthly)", m(-90,0)), color= 'green'
 
-#plt.annotate(<> pointname, xy= (xloc, yloc))
-for idx, row in gdf():
-    plt.annotate(s=row["Rent Price (Monthly)"], xy=row["geometry"])
-
+#With annotate I would like to add text to the various data points to show the rent prices of the locations
+#this first example is how to manually add text to a location
+plt.annotate(text= "cow", xy=(7.245303, 46.94853))
 
 
-plt.annotate("pointname", (7.245303, 46.94853))
+#this is the work in progress in how to itterate through all values. Mind that as I have used row names with parentheseis
+#"Latitude" is currently a stand in for Rent price Monthly, which I would modify in the excel if this works out
+for idx, row in gdf.iterrows():
+    plt.annotate(text=row["Latitude"], xy=row["geometry"])
 
-pointname= gdf.Latitude
-print(pointname)
+
+#while you can copy the produced fig, this would be a way to safe it directly.
 fig.savefig("test.pdf", dpi=1000)
 
 
-print(gdf.Longitude[0:])
-
-xloc= gdf.Longitude[0:]
-print(xloc)
-
-yloc= gdf.Latitude[0:]
-print(yloc)
-
-#plt.annotate(pointname, (gdf.Latitude[2], gdf.Longitude[2]))
-
-#plt.annotate("gdf.Rent Price (Monthly)", m(Longitude, Latitude))
-#plt.annotate(gdf.(colums= [2])), m(gdf.(colums= ["Longitude"]), gdf.(colums= ["Latitude"]))
-#plt.annotat(text= ("gdf.Rent Price (Monthly)"), m(-90,0))
 
 
 
-gdf.plod_basemap(ax, zoom= 12, crs=gdf.crs, source=ctx.providers.OpenStreetMap.Mapnik)
