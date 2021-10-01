@@ -99,12 +99,26 @@ ax.set_ylim([gdf.Latitude.min()-0.1,gdf.Latitude.max()+0.1])
 ctx.add_basemap(ax, crs=gdf.crs, source=ctx.providers.OpenStreetMap.Mapnik)
 
 plt.title("NOAH Housing", fontsize=20, color= 'green')
-#plt.annotate("gdf.Rent Price (Montly)", m(-90,0)), color= 'green'
+#plt.annotate("gdf.Rent Price (Monthly)", m(-90,0)), color= 'green'
+
+plt.annotate(pointname, (gdf, gdf.Longitude[2]))
+
+pointname= gdf.Latitude
+print(pointname)
 
 
-plt.annotate(gdf.gdf.(columms= ["Rent Price (Monthly)"])), m(gdf.(colums= ["Longitude"]), gdf.(colums= ["Latitude"]))
-#plt.annotat(text= ("gdf.Rent Price (Montly)"), m(-90,0))
+print(gdf.Longitude[0:])
 
-dino= gdf.Dataframe(columns= ["Rent Price (Monthly)"])
+xloc= gdf.Longitude[0:]
+print(xloc)
+yloc=
+
+#plt.annotate(pointname, (gdf.Latitude[2], gdf.Longitude[2]))
+
+#plt.annotate("gdf.Rent Price (Monthly)", m(Longitude, Latitude))
+#plt.annotate(gdf.(colums= [2])), m(gdf.(colums= ["Longitude"]), gdf.(colums= ["Latitude"]))
+#plt.annotat(text= ("gdf.Rent Price (Monthly)"), m(-90,0))
+
+
 
 gdf.plod_basemap(ax, zoom= 12, crs=gdf.crs, source=ctx.providers.OpenStreetMap.Mapnik)
