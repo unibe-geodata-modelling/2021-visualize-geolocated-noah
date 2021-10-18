@@ -1,24 +1,23 @@
-#0.0importy stuff
-#rememeber you have to install these before you can import them
+#0.0 First the modules listed below must be installed and then imported (for this to work you need to be running python version 3.7)
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 import xlrd
 import openpyxl
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import xlrd
-import openpyxl
+import pip
+import fiona
+import pyproj
+import rtree
+import shapely
+import geopandas as gpd
+import contextily as ctx
 
-#1.0 Data preparation
-# remember you have to define how the excel should be set up. See word
-#if 1.5 option 2 is selected, which is likely a second excel needs ot be set up, where the data is to be written in. or a second sheet should be added to the original file.
-# one open question is how the axis are defined, depending maybe also if I use cartopy or something els
-#1.1 remember import the stuff above so the programm is able to read the excel files easier. so 0.0
-#currently I have prepared a excel file which this program will access
-#1.2 read the excel file. To facilitate the fact that each end user will be creating their own, the location will be defined up top
+#1.0 Data preparation: To use this programm two excel files, of which example files can be downloaded from github, have to be prepared according to the read me
+
+#1.1 To facilitate the reading of the user input data, the location of the prepared excel files must be set. This must changed according to where the user has stored their prepared excel files.
 myworkspace="C:\FinnFeldmann\Excel Files"
+
+#1.2 This step reads the excel file.
 
 df = pd.read_excel(myworkspace+"\Test Excel Dataset.xlsx", sheet_name='Sheet1', engine= 'openpyxl')
 
@@ -43,7 +42,7 @@ dfnew.to_excel(myworkspace+"\dfnew.xlsx")# saves it but only in the reopsitory l
 #option 2 this variant you need to make an excel in advance and give path and sheet name. Thne the data will be written to the sheet of the preixisting excel file
 
 
-dfnew.to_excel(myworkspace+"\Cowabunga.xlsx", sheet_name="Bananogram")
+dfnew.to_excel(myworkspace+"\Test NOAH Dataset.xlsx", sheet_name="Page 1")
 
 
 
@@ -63,7 +62,7 @@ import contextily as ctx
 #2.2 If not the code below can be read. this is both if step 1 was done before this session, or if the file needent be prepared and could be used directly.pathway needs to be given.
 
 
-dfnew = pd.read_excel(myworkspace+"\Cowabunga.xlsx", sheet_name="Bananogram", engine= 'openpyxl')
+dfnew = pd.read_excel(myworkspace+"\Test NOAH Dataset.xlsx", sheet_name="Page 1", engine= 'openpyxl')
 #2.3 current dataframe has no geometry, so need to convert it so it can have a crs.
 
 gdf = gpd.GeoDataFrame(dfnew, geometry=gpd.points_from_xy(dfnew.Longitude,dfnew.Latitude))
