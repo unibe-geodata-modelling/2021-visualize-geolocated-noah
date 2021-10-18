@@ -41,7 +41,7 @@ dfnew.to_excel(myworkspace+"\Test NOAH Dataset.xlsx", sheet_name="Page 1")
 
 
 #2.0map creation from the adapted excel file Test NOAH Dataset
-#2.1 In case part 2 is not performed right after part 1 (i.e. part 1 is no longer in memory) then part 0.0 must be run again
+#2.1 In case part 2 is not performed right after part 1 (i.e. part 1 is no longer in memory) then part 0.0  and 1.1 must be run again
 
 
 #2.2 In case part 2 is not performed right after part 1 (i.e. part 1 is no longer in memory) then the adapted excel file Test NOAH Dataset must be reloaded into memory, in which case the code below must be run
@@ -51,47 +51,38 @@ dfnew = pd.read_excel(myworkspace+"\Test NOAH Dataset.xlsx", sheet_name="Page 1"
 #2.3 current dataframe has no geometry, so need to convert it so it can have a crs which is needed for geopandas to use the input data
 
 gdf = gpd.GeoDataFrame(dfnew, geometry=gpd.points_from_xy(dfnew.Longitude,dfnew.Latitude))
-gdf.crs
 
 #after conversion a crs needs to be specified which is done in this step (the crs needed depends on the add_basemap provider)
 
 gdf = gdf.set_crs(4326,allow_override=True)
 
-#gdf = gdf.set_crs(3857,allow_override=True)
-#this is currently old hat blow. Reviw once the tranfpration has been achieved
-#2.3 Now with data loaded (which has to have its geolocation given in EPSG: 4326 i.e WGS84 )
-#first check projection(didnt work as no crs)
-gdf.crs
-#If data not in the right projection, can reprojet to web map projectiosn
-#dfnew_wm = dfnew.to_crs("EPSG:4326")
+#2.4 as a test gdf points can be plotted on a graph
 
-#2.4 plot first. Here the set dataframe is plotted against a blank backgroun
-
-#gdf.boundary.plot()
 gdf.plot()
 
-#2.5 now try to add a basemap. This should add a automatically generated map to the backgruond to the plotted points
-ax = gdf.plot(figsize=(9,9))
-#ax = gdf.plot(figsize= (gdf.Longitude.max()+0.1,gdf.Latitude.max()+0.1))
-#ax = gdf.plot()
+#2.4.5 As interjection, steps 2.5-2
 
+#2.5 Here the axis are set, in that the figure size is defined
+
+ax = gdf.plot(figsize=(9,9))
+
+#2.6 Here further parameters for the axis are defined, relative to the datapoints so the selected map segment is appropriate for the datapoints plotted within
 
 ax.set_xlim([gdf.Longitude.min()-0.1,gdf.Longitude.max()+0.1])
 ax.set_ylim([gdf.Latitude.min()-0.1,gdf.Latitude.max()+0.1])
+
+#2.7 Here the basemap provider is defined and the previousely defined crs attributed to it
+
 ctx.add_basemap(ax, crs=gdf.crs, source=ctx.providers.OpenStreetMap.Mapnik)
 
+#2.8 Here a title is added to the graph
 plt.title("NOAH Housing", fontsize=20, color= 'green')
 
-#With annotate I would like to add text to the various data points to show the rent prices of the locations
-#this first example is how to manually add text to a location
-plt.annotate(text= "cow", xy=(7.245303, 46.94853))
+#2.9 In addtion if the user desires, annotations can be added to the graph. Below is one exampe, annotating the plot that is the most affordable; has the lowest price
 
+plt.annotate(text= "Most affordable", xy=(7.245303, 46.94853))
 
-#this is the work in progress in how to itterate through all values. Mind that as I have used row names with parentheseis
-#"Latitude" is currently a stand in for Rent price Monthly, which I would modify in the excel if this works out
-for idx, row in gdf.iterrows():
-    plt.annotate(text=row["Latitude"], xy=row["geometry"])
-
+#3.0 While the figure produced can be saved directly (using the save icon at the bottom of the figure) this the line below provides an alternative way to save the figure where dpi (dots per inch) can be adjusted
 
 #while you can copy the produced fig, this would be a way to safe it directly.
 fig.savefig("test.pdf", dpi=1000)
