@@ -48,14 +48,12 @@ dfnew.to_excel(myworkspace+"\Test NOAH Dataset.xlsx", sheet_name="Page 1")
 
 dfnew = pd.read_excel(myworkspace+"\Test NOAH Dataset.xlsx", sheet_name="Page 1", engine= 'openpyxl')
 
-#2.3 current dataframe has no geometry, so need to convert it so it can have a crs (be attributed to a projection system)
+#2.3 current dataframe has no geometry, so need to convert it so it can have a crs which is needed for geopandas to use the input data
 
 gdf = gpd.GeoDataFrame(dfnew, geometry=gpd.points_from_xy(dfnew.Longitude,dfnew.Latitude))
 gdf.crs
 
-
-#after conversion can specify the crs. Some variant of this double check if this is the projection I want
-#gdf = gdf.set_crs(2056,allow_override=True)
+#after conversion a crs needs to be specified which is done in this step (the crs needed depends on the add_basemap provider)
 
 gdf = gdf.set_crs(4326,allow_override=True)
 
