@@ -1,8 +1,10 @@
 # 2021-visualize-geolocated-noah
 
-What the purpose of the program is: 
+What the purpose of the program is: element {
+  font-size: 75;
+} 
 
-The purpose of this program is, as the name suggests, to visualize NOAH datapoints that have been geolocated. NOAH is an acronym for Naturally Occurring Affordable Housing, a designation for housing that fulfills certain affordability criteria. Finn Feldmann has proposed such numerical criteria both as an interpretation of current (2021) literature on NOAH, and also specifically for Switzerland which will be used as the basis for this program. While this conceptual framework has been prepared for Switzerland in the case of this program, which is more openly aimed at a global use, global values will be used rather than the locally adapted figures (specifically the program will use a 30% of income value not the adapted 25% of income value). The idea is that NOAH represents a way to easily detect housing that is affordable regardless of who provides the housing, and this program builds on this intent by allowing a user to visualize the dataset in a map, so that the spatial component of where housing that qualifies as NOAH is located become evident. 
+The purpose of this program is, as the name suggests, to visualize NOAH datapoints that have been geolocated. NOAH is an acronym for Naturally Occurring Affordable Housing, a designation for housing that fulfills certain affordability criteria. Finn Feldmann has proposed such numerical criteria both as an interpretation of current (2021) literature on NOAH, and also specifically for Switzerland which will be used as the basis for this program. While this conceptual framework has been prepared for Switzerland in the case of this program, which is more openly aimed at a global use, global values will be used rather than the locally adapted figures (specifically the program will use a 30% of income value not the adapted 25% of income value). The idea is that NOAH represents a way to easily detect housing that is affordable regardless of who provides the housing, and this program builds on this intent by allowing a user to visualize the dataset in a map, so that the spatial component of where housing that qualifies as NOAH is located becomes evident. 
 
 NOAH numerical criteria used by the program, adapted from Finn Feldmann`s proposed definition: 
 
@@ -21,9 +23,10 @@ The program 2021 visualize geolocated noah is a program with two main functions 
 What is needed to run the program: 
 •	Python 3.7
 •	Excel
+
 Step by Step instructions how to use the program: (keep in mind the code contains similar instructions as well) 
 1.	For the first step, make sure that python version 3.7 is installed, as other tested versions did not allow the required modules to be installed.
-2.	On github example excel files can be downloaded, to show how the data should be imputed. 
+2.	Download from github the provided example excel files, to see how the data should be imputed. 
 3.	For the first excel, Test Excel Dataset
 4.	 
 5.	In Colum A the user must add in names to refer to individual rental housing units 
