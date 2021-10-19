@@ -49,5 +49,6 @@ __Step by Step instructions how to use the program: (keep in mind the code conta
 15.	 ![Test NOAH Dataset](https://user-images.githubusercontent.com/79707125/137983602-255eb5f7-1345-45f9-ba80-a2f8dab9b6d5.png)
 
 16.	For Step two these datapoints are plotted to a background map of the surrounding region, as can be seen with the example below. 
-![Figure_1](https://user-images.githubusercontent.com/79707125/137979655-3438ce91-4bca-49af-a3b1-b0f456701c13.png)
+![Figure_1 Final](https://user-images.githubusercontent.com/79707125/137985559-c018cb74-fea6-477d-914f-8ec17f5f1896.jpg)
+
 
