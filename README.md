@@ -19,6 +19,7 @@ __What the program does in short:__
 The program 2021 visualize geolocated noah is a program with two main functions into which the code is split. 
 
 1: The first function of the program is to take housing datasets, saved as an excel file and process them so that only the housing datasets which qualify as NOAH remain, which then will be saved to a new excel file.
+
 2: The second function is, that this program will take the newly created excel file containing NOAH housing only, and then plot those datapoints on a map so that the user can see the spatial distribution of the datapoints. The global map will scale to the datapoints so no matter where the NOAH housing units are located an appropriate map segment will be selected.
 
 __What is needed to run the program:__ 
