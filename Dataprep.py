@@ -12,18 +12,18 @@ import shapely
 import geopandas as gpd
 import contextily as ctx
 
-#1.0 Data preparation: To use this programm two excel files, of which example files can be downloaded from github, have to be prepared according to the read me
+#1.0 Data preparation: To use this program two excel files, of which example files can be downloaded from github, have to be prepared according to the read me
 
 #1.1 To facilitate the reading of the user input data, the location of the prepared excel files must be set. This must changed according to where the user has stored their prepared excel files.
 myworkspace="C:\FinnFeldmann\Excel Files"
 
-#1.2 This step reads the excel file. If the example file name or sheet name have been change, then this must be adapted here as well.
+#1.2 This step reads the excel file. If the example file name or sheet name have been changed, then this must be adapted here as well.
 df = pd.read_excel(myworkspace+"\Test Excel Dataset.xlsx", sheet_name='Sheet1', engine= 'openpyxl')
 
-#1.3 Here the rentmax is defined, by multiplying the median income by .24, as per Finn Feldmanns NOAH formula, see also the read me
-df["rentmax"]= df['Median Income (Monthly)'] *0.24 #calculates the maximum rent for the median mean and adds it as a new column caller rentmanx to the df
+#1.3 Here the rentmax is defined, by multiplying the median income by 0.24, as per Finn Feldmanns NOAH formula, see also the read me
+df["rentmax"]= df['Median Income (Monthly)'] *0.24 #calculates the maximum rent for the median income and adds it as a new column called rentmanx to the df
 
-#1.4 compare values generated at 1.3 with the colum with rent prices, and delete rows where rent exceeds the values of 1.3
+#1.4 compares values generated at 1.3 with the colum with rent prices, and deletes rows where rent exceeds the values of 1.3
 dfnew= df[df['Rent Price (Monthly)']<=df["rentmax"]] #this part creates a new dataframe (dfnew) which as a condition only includes rows where rent montly is smaller or equal to rentmax.
 
 #1.5 save newly created NOAH only dataset to the second prepared Excel file Test NOAH Dataset
@@ -34,7 +34,7 @@ dfnew.to_excel(myworkspace+"\dfnew.xlsx")# saves it but only in the reopsitory l
 #option 2 (recommended and used for part 2) this variant you adapt the excel file Test NOAH Dataset according to the read me
 dfnew.to_excel(myworkspace+"\Test NOAH Dataset.xlsx", sheet_name="Page 1")
 
-#2.0map creation from the adapted excel file Test NOAH Dataset
+#2.0 map creation from the adapted excel file Test NOAH Dataset
 
 #2.1 In case part 2 is not performed right after part 1 (i.e. part 1 is no longer in memory) then part 0.0  and 1.1 must be run again
 
