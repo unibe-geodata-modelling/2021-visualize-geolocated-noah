@@ -13,16 +13,17 @@ To abridge the numerical definition mentioned above, here is the numerical crite
 •	This means the medium income * 0.24= the maximum allowed rent for a rental unit to be still considered a NOAH housing unit. 
 
 __What the program does in short:__
+
 The program 2021 visualize geolocated noah is a program with two main functions into which the code is split. 
 
 1: The first function of the program is to take housing datasets, saved as an excel file and process them so that only the housing datasets which qualify as NOAH remain, which then will be saved to a new excel file.
 2: The second function is, that this program will take the newly created excel file containing NOAH housing only, and then plot those datapoints on a map so that the user can see the spatial distribution of the datapoints. The global map will scale to the datapoints so no matter where the NOAH housing units are located an appropriate map segment will be selected.
 
-What is needed to run the program: 
+__What is needed to run the program:__ 
 •	Python 3.7
 •	Excel
 
-Step by Step instructions how to use the program: (keep in mind the code contains similar instructions as well) 
+__Step by Step instructions how to use the program: (keep in mind the code contains similar instructions as well)__ 
 1.	For the first step, make sure that python version 3.7 is installed, as other tested versions did not allow the required modules to be installed.
 2.	Download from github the provided example excel files, to see how the data should be imputed. 
 3.	For the first excel, Test Excel Dataset
