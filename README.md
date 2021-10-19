@@ -38,4 +38,5 @@ Step by Step instructions how to use the program: (keep in mind the code contain
 14.	An exemplary step 1 result can be seen below, where of the five input housing units, only three qualify as NOAH and thus are saved in the second excel file. In addition, there is a new column that now shows the maximum rent the housing unit could have to still be considered NOAH housing.
 15.	 
 16.	For Step two these datapoints are plotted to a background map of the surrounding region, as can be seen with the example below. 
-17.	 
+17.	 ![Figure_1](https://user-images.githubusercontent.com/79707125/137979655-3438ce91-4bca-49af-a3b1-b0f456701c13.png)
+
