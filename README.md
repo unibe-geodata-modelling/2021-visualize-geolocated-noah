@@ -43,8 +43,8 @@ __Step by Step instructions how to use the program: (keep in mind the code conta
 9.	To manually find the coordinates of the users housing units in this projection system this link may be of service https://epsg.io/4326
 10.	As a note, impute data is not limited to five rows, the user may expand this list as needed
 11.	As a second note, if the user changes the name of the file, or sheet name it will have to be changed in the program as well for it to work.
-12.	The Second Excel, Test NOAH Dataset, only the file name and sheet name have to correspond with the program (by default these will match), as the contents will be overwritten. 
-13.	The Second Excel file must upon running of part 1 of the program contain at least three NOAH housing units or else step two cannot run
+12.	In the Second Excel file, Test NOAH Dataset, only the file name and sheet name have to correspond with the program (by default these will match), as the contents will be overwritten. 
+13.	The Second Excel file must after running part 1 of the program, contain at least three NOAH housing units or else step two cannot run
 14.	An exemplary step 1 result can be seen below, where of the five input housing units, only three qualify as NOAH and thus are saved in the second excel file. In addition, there is a new column that now shows the maximum rent the housing unit could have to still be considered NOAH housing.
 15.	 ![Test NOAH Dataset](https://user-images.githubusercontent.com/79707125/137983602-255eb5f7-1345-45f9-ba80-a2f8dab9b6d5.png)
 
