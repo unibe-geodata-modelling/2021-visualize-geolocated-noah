@@ -32,7 +32,8 @@ __Step by Step instructions how to use the program: (keep in mind the code conta
 1.	For the first step, make sure that python version 3.7 is installed, as other tested versions did not allow the required modules to be installed.
 2.	Download from github the provided example excel files, to see how the data should be imputed. 
 3.	For the first excel, Test Excel Dataset
-4.	 ![Test Excel Dataset](https://user-images.githubusercontent.com/79707125/137983573-0f95b17a-e027-4389-a711-cefaf79228f4.png)
+4.	![Test Excel Dataset Final](https://user-images.githubusercontent.com/79707125/137983966-b64e4adb-2c58-4335-8b2a-7dcdce621a5a.png)
+
 
 5.	In Colum A the user must add in names to refer to individual rental housing units 
 6.	In Colum B the median income of the region must be added
