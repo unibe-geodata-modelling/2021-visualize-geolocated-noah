@@ -31,7 +31,8 @@ __Step by Step instructions how to use the program: (keep in mind the code conta
 1.	For the first step, make sure that python version 3.7 is installed, as other tested versions did not allow the required modules to be installed.
 2.	Download from github the provided example excel files, to see how the data should be imputed. 
 3.	For the first excel, Test Excel Dataset
-4.	 
+4.	 ![Test Excel Dataset](https://user-images.githubusercontent.com/79707125/137983573-0f95b17a-e027-4389-a711-cefaf79228f4.png)
+
 5.	In Colum A the user must add in names to refer to individual rental housing units 
 6.	In Colum B the median income of the region must be added
 7.	In Colum C the monthly rent price of the housing unit must be added
@@ -42,7 +43,8 @@ __Step by Step instructions how to use the program: (keep in mind the code conta
 12.	The Second Excel, Test NOAH Dataset, only the file name and sheet name have to correspond with the program (by default these will match), as the contents will be overwritten. 
 13.	The Second Excel file must upon running of part 1 of the program contain at least three NOAH housing units or else step two cannot run
 14.	An exemplary step 1 result can be seen below, where of the five input housing units, only three qualify as NOAH and thus are saved in the second excel file. In addition, there is a new column that now shows the maximum rent the housing unit could have to still be considered NOAH housing.
-15.	 
+15.	 ![Test NOAH Dataset](https://user-images.githubusercontent.com/79707125/137983602-255eb5f7-1345-45f9-ba80-a2f8dab9b6d5.png)
+
 16.	For Step two these datapoints are plotted to a background map of the surrounding region, as can be seen with the example below. 
 17.	 ![Figure_1](https://user-images.githubusercontent.com/79707125/137979655-3438ce91-4bca-49af-a3b1-b0f456701c13.png)
 
