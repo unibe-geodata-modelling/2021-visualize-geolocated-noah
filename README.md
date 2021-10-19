@@ -9,7 +9,9 @@ __NOAH numerical criteria used by the program, adapted from Finn Feldmann`s prop
 To abridge the numerical definition mentioned above, here is the numerical criteria used by the program: 
 
 •	Households must earn 80% or less of the median income to be low income.
+
 •	The rental housing must not exceed 30% of the Household income to be considered affordable.
+
 •	This means the medium income * 0.24= the maximum allowed rent for a rental unit to be still considered a NOAH housing unit. 
 
 __What the program does in short:__
@@ -20,7 +22,9 @@ The program 2021 visualize geolocated noah is a program with two main functions 
 2: The second function is, that this program will take the newly created excel file containing NOAH housing only, and then plot those datapoints on a map so that the user can see the spatial distribution of the datapoints. The global map will scale to the datapoints so no matter where the NOAH housing units are located an appropriate map segment will be selected.
 
 __What is needed to run the program:__ 
+
 •	Python 3.7
+
 •	Excel
 
 __Step by Step instructions how to use the program: (keep in mind the code contains similar instructions as well)__ 
